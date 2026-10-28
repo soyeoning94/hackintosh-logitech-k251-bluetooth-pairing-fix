@@ -111,8 +111,8 @@ Intel 蓝牙固件对**新建的 LE 连接**不会发出这两个 HCI 事件：
 ### 方式 A：直接用预编译 kext（推荐，1 分钟）
 
 ```bash
-git clone https://github.com/soyeoning94/hackintosh-intel-bt-ble-hid-fix.git
-cd hackintosh-intel-bt-ble-hid-fix
+git clone https://github.com/soyeoning94/hackintosh-logitech-k251-bluetooth-pairing-fix.git
+cd hackintosh-logitech-k251-bluetooth-pairing-fix
 
 # 1) 备份现有 OC 目录（务必先做）
 sudo mkdir -p /Volumes/EFI && sudo diskutil mount -mountPoint /Volumes/EFI disk0s1
