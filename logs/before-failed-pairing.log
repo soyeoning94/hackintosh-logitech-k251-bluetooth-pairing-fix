@@ -1,0 +1,15 @@
+# 修复前 (macOS 13.7.8, IntelBTPatcher 2.4.0 原版) — 2026-10-28 22:52:46
+# 关键：连接成功 -> 毫秒级 status=4803 isPairing=0 -> PHYReady:no -> 30s 后被取消，全程无授权码
+
+2026-10-28 22:58:09.521 Df bluetoothd[1598:da5a7] [com.apple.bluetooth:Server.LE.Connection] Outgoing LE Connection complete for handle 0x7fabe6804090 address Random C0:0A:24:3C:E7:DC with status 0
+2026-10-28 22:58:09.524 Df bluetoothd[1598:da5a7] [com.apple.bluetooth:Server.GATT] Gatt device connected on transport 2 on handle 0x7fabe6804090 address:Random C0:0A:24:3C:E7:DC with status 0
+2026-10-28 22:58:09.524 Df bluetoothd[1598:7b20] [com.apple.bluetooth:Server.LE.Security] encryptionStatusChangedCb handle:0x7fabe6804090 status=4803 address=Random C0:0A:24:3C:E7:DC isPairing=0
+2026-10-28 22:58:09.524 Df bluetoothd[1598:da5a7] [com.apple.bluetooth:Server.LE.Security] Encryption is now disabled for device "3C8EF642-A6EB-8A4C-81FE-061BD5524156" (Random C0:0A:24:3C:E7:DC)
+2026-10-28 22:58:09.607 Df bluetoothd[1598:7b22] [com.apple.bluetooth:Stack.LE]  ReadRemoteVersionInformationCB LMPVersion=12 mfgName=529 LMPSubVersion=16643 status OI_OK, ready: wait-for-version, role 0
+2026-10-28 22:58:09.609 Df bluetoothd[1598:7b22] [com.apple.bluetooth:Stack.LE]  Remote Features: 3D 01 00 00 00 00 00 00 , handle E6804090, ready: wait-for-features, EDL [remote 1, local 1], 2M [remote 1, local 1], ChanSel2 [remote 0, local 1] PHYReady:no
+2026-10-28 22:58:39.481 Df bluetoothd[1598:db978] [com.apple.bluetooth:Server.App] Unregistering pairing agent for session "com.apple.BluetoothSettings-central-39536-51"
+2026-10-28 22:58:39.514 Df bluetoothd[1598:db846] [com.apple.bluetooth:Server.LE.Connection] LE Link disconnected for handle 0x7fabe6804090 address Random C0:0A:24:3C:E7:DC with reason 722 encryptionPending 0
+2026-10-28 22:58:53.461 Df bluetoothd[1598:db680] [com.apple.bluetooth:Server.LE.Connection] Outgoing LE Connection complete for handle 0x7fabe36040b0 address Random C0:0A:24:3C:E7:DC with status 0
+2026-10-28 22:58:53.470 Df bluetoothd[1598:db680] [com.apple.bluetooth:Server.GATT] Gatt device connected on transport 2 on handle 0x7fabe36040b0 address:Random C0:0A:24:3C:E7:DC with status 0
+2026-10-28 22:58:53.471 Df bluetoothd[1598:7b20] [com.apple.bluetooth:Server.LE.Security] encryptionStatusChangedCb handle:0x7fabe36040b0 status=4803 address=Random C0:0A:24:3C:E7:DC isPairing=0
+2026-10-28 22:58:53.471 Df bluetoothd[1598:dbc45] [com.apple.bluetooth:Server.LE.Security] Encryption is now disabled for device "3C8EF642-A6EB-8A4C-81FE-061BD5524156" (Random C0:0A:24:3C:E7:DC)

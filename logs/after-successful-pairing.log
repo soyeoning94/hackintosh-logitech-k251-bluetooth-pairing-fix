@@ -1,0 +1,14 @@
+# 修复后 (IntelBTPatcher 2.5.1 + PR515 补丁) — 2026-10-28 23:38
+# 注意：第一次点连接仍会失败一次 (smpPairingCompleted status=4805)，再点一次即成功；
+#       成功后出现 'Accepting pairing request with passkey' -> status=0 isPairing=1 -> SMP 完成 -> BLEPaired。
+
+2026-10-28 23:38:35.292 Df bluetoothd[139:646] [com.apple.bluetooth:Server.LE.Security] smpPairingCompleted address=Random C0:0A:24:3C:E7:DC resolvedAddress:Public 00:00:00:00:00:00 status=4805
+2026-10-28 23:38:37.619 Df bluetoothd[139:642] [com.apple.bluetooth:Server.LE.Security] encryptionStatusChangedCb handle:0x7fac15e04bf0 status=4803 address=Random C0:0A:24:3C:E7:DC isPairing=0
+2026-10-28 23:38:38.179 Df bluetoothd[139:646] [com.apple.bluetooth:Server.BTUIClient] LE HID connection complete for address: C0:0A:24:3C:E7:DC (VID:0x046D/PID:0xB397
+2026-10-28 23:38:39.175 Df bluetoothd[139:869] [com.apple.bluetooth:Server.LE.Security] Accepting pairing request with passkey 708717 from device "3C8EF642-A6EB-8A4C-81FE-061BD5524156" (Random C0:0A:24:3C:E7:DC)
+2026-10-28 23:38:44.180 Df bluetoothd[139:646] [com.apple.bluetooth:Server.LE.Security] encryptionStatusChangedCb handle:0x7fac15e04bf0 status=0 address=Random C0:0A:24:3C:E7:DC isPairing=1
+2026-10-28 23:38:44.180 Df bluetoothd[139:869] [com.apple.bluetooth:Server.LE.Security] Encryption is now enabled for device "3C8EF642-A6EB-8A4C-81FE-061BD5524156" (Random C0:0A:24:3C:E7:DC)
+2026-10-28 23:38:44.224 Df bluetoothd[139:646] [com.apple.bluetooth:Server.LE.Security] smpPairingCompleted address=Random C0:0A:24:3C:E7:DC resolvedAddress:Random C0:0A:24:3C:E7:DC status=0
+2026-10-28 23:38:44.257 Df bluetoothd[139:869] [com.apple.bluetooth:CBStackDeviceMonitor] Device found: CBDevice 3C8EF642-A6EB-8A4C-81FE-061BD5524156, BDA C0:0A:24:3C:E7:DC, Nm 'Logi K251', PID 0xB397 (?), VID 0x046D, VS 2, DsFl 0xA00000 < Connections Pairing >, DvF 0x202000 < BLEPaired Central >, DvT Keyboard, CnS 0x400000 < BLE >, FV 'BK101.00_0007', inV 9, CF 0x80800800000 < Pairing DiscoveryFlags Attributes >
+2026-10-28 23:38:45.082 Df bluetoothd[139:8ea] [com.apple.bluetooth:CBStackDeviceMonitor] Device found: CBDevice 3C8EF642-A6EB-8A4C-81FE-061BD5524156, BDA C0:0A:24:3C:E7:DC, Nm 'Logi K251', PID 0xB397 (?), VID 0x046D, VS 2, DsFl 0xA00000 < Connections Pairing >, DvF 0x202000 < BLEPaired Central >, DvT Keyboard, CnS 0x400000 < BLE >, FV 'BK101.00_0007', inV 12
+2026-10-28 23:38:46.317 Df bluetoothd[139:60a] [com.apple.bluetooth:CBStackDeviceMonitor] Device found: CBDevice 3C8EF642-A6EB-8A4C-81FE-061BD5524156, BDA C0:0A:24:3C:E7:DC, Nm 'Logi K251', PID 0xB397 (?), VID 0x046D, VS 2, DsFl 0xA00000 < Connections Pairing >, DvF 0x202000 < BLEPaired Central >, DvT Keyboard, CnS 0x400000 < BLE >, Battery M -95%, FV 'BK101.00_0007', inV 12

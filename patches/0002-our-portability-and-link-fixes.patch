@@ -1,0 +1,33 @@
+diff --git a/IntelBTPatcher/IntelBTPatcher.cpp b/IntelBTPatcher/IntelBTPatcher.cpp
+index d2e4f72..13def08 100644
+--- a/IntelBTPatcher/IntelBTPatcher.cpp
++++ b/IntelBTPatcher/IntelBTPatcher.cpp
+@@ -320,14 +320,17 @@ static void asyncIOCompletion(void* owner, void* parameter, IOReturn status, uin
+     }
+     if (asyncOwner->action)
+         asyncOwner->action(asyncOwner->owner, parameter, status, bytesTransferred);
+-    delete asyncOwner;
++    // ownerData 来自静态池，无需释放
+ }
+ 
+ IOReturn CIntelBTPatcher::
+ newAsyncIO(void *that, IOMemoryDescriptor* dataBuffer, uint32_t bytesTransferred, IOUSBHostCompletion* completion, uint32_t completionTimeoutMs)
+ {
+     if (remoteReadSCount > 0 && that == _hookPipeInstance && completion) {
+-        AsyncOwnerData *ownerData = new AsyncOwnerData;
++        // 用静态池代替 new/delete：避免引入 __Znwm 这类内核不导出的外部符号
++        static AsyncOwnerData ownerPool[4];
++        static unsigned int ownerIdx = 0;
++        AsyncOwnerData *ownerData = &ownerPool[ownerIdx++ & 3];
+         ownerData->action = completion->action;
+         ownerData->owner = completion->owner;
+         ownerData->dataBuffer = dataBuffer;
+@@ -345,7 +348,7 @@ void CIntelBTPatcher::captureIntelInterruptPipe(void *that, StandardUSB::Endpoin
+         return;
+     const StandardUSB::DeviceDescriptor *deviceDescriptor = device->getDeviceDescriptor();
+     if (deviceDescriptor && deviceDescriptor->idVendor == VENDOR_USB_INTEL) {
+-        uint8_t epType = StandardUSB::getEndpointType(descriptor);
++        uint8_t epType = descriptor->bmAttributes & 0x3; // bmAttributes[1:0] = transfer type
+         if (epType == kIOUSBEndpointTypeInterrupt)
+             CIntelBTPatcher::_hookPipeInstance = that;
+     }
